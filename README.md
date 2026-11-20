@@ -9,7 +9,7 @@
 在项目目录中，以日常使用 Navicat 的用户运行即可生效：
 
 ```bash
-./reset.sh --dry-run   # 预览改动的路径
+./reset.sh --dry-run   # 预览改动的目录
 ./install.sh
 ```
 
@@ -23,11 +23,11 @@
 
 ## 重置范围
 
-| 目标 | 操作 |
-| --- | --- |
-| dconf 子树 `/com/premiumsoft/navicat-premium/` | 备份后重置用户覆盖值。系统默认值和锁定策略照常生效 |
-| `~/.config/navicat/Premium/preferences.json` | 备份后删除 |
-| 同目录的 `preferences.json.lock` | 删除 |
+| 目标                                                | 操作    |
+| ------------------------------------------------- | ----- |
+| dconf 子树 `/com/premiumsoft/navicat-premium/`      | 备份后重置 |
+| `~/.config/navicat/Premium/preferences.json`      | 备份后删除 |
+| `~/.config/navicat/Premium/preferences.json.lock` | 删除    |
 
 其他文件（`Profiles/`、连接配置等）不受影响。设置了绝对路径的 `XDG_CONFIG_HOME` 时，配置目录使用其下的 `navicat/Premium/`。
 
@@ -43,7 +43,7 @@
 
 ```bash
 ~/.local/bin/navicat-daily-reset.sh --dry-run              # 查看备份目录
-~/.local/bin/navicat-daily-reset.sh --restore YYYY-MM-DD   # 关闭 Navicat 后执行
+~/.local/bin/navicat-daily-reset.sh --restore YYYY-MM-DD   # 恢复备份
 ```
 
 恢复会先保存当前配置，中途出错自动回滚。恢复成功后，当天再次登录不会重置。
